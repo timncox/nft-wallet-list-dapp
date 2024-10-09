@@ -1,9 +1,7 @@
-
 import React, { useState } from 'react';
 import { ethers } from 'ethers';
 import HolderTable from './components/HolderTable';
 import './App.css';
-
 
 // Use environment variables to store sensitive information like Infura keys
 const lineaSepoliaRpc = process.env.REACT_APP_INFURA_RPC_URL;
@@ -25,7 +23,7 @@ function App() {
       // Define the ABI to fetch the balance of an address
       const abi = [
         'function balanceOf(address owner) view returns (uint256)',
-        'event Transfer(address indexed from, address indexed to, uint256 indexed tokenId)'
+        'event Transfer(address indexed from, address indexed to, uint256 indexed tokenId)',
       ];
 
       // Create a contract instance
@@ -37,7 +35,7 @@ function App() {
 
       // Track holders based on Transfer events
       const holderAddresses = new Set();
-      events.forEach(event => {
+      events.forEach((event) => {
         const { from, to } = event.args;
         if (from !== ethers.constants.AddressZero) {
           holderAddresses.delete(from);
