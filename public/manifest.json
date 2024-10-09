@@ -1,6 +1,7 @@
 {
     "short_name": "NFTWalletList",
     "name": "NFT Wallet List dApp",
+    "homepage": ".",
     "icons": [
       {
         "src": "favicon.ico",
@@ -12,5 +13,6 @@
     "display": "standalone",
     "theme_color": "#000000",
     "background_color": "#ffffff"
+    
   }
   
