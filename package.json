@@ -7,7 +7,7 @@
       "react-dom": "^18.0.0",
       "react-scripts": "5.0.0",
       "ethers": "^5.7.0",
-      "viem": "^0.1.0"
+      "dotenv": "^16.0.0"
     },
     "scripts": {
       "start": "react-scripts start",

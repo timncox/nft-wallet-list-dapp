@@ -1,14 +1,13 @@
+
 import React, { useState } from 'react';
-import { createPublicClient, http } from 'viem';
 import { ethers } from 'ethers';
 import HolderTable from './components/HolderTable';
+import './App.css';
 
-// Linea Sepolia RPC endpoint
-const lineaSepoliaRpc = 'https://rpc-sepolia.linea.build';
+// Use environment variables to store sensitive information like Infura keys
+const lineaSepoliaRpc = process.env.REACT_APP_INFURA_RPC_URL;
 
-const client = createPublicClient({
-  transport: http(lineaSepoliaRpc),
-});
+const provider = new ethers.providers.JsonRpcProvider(lineaSepoliaRpc);
 
 function App() {
   const [contractAddress, setContractAddress] = useState('');
@@ -29,7 +28,7 @@ function App() {
       ];
 
       // Create a contract instance
-      const contract = new ethers.Contract(contractAddress, abi, client);
+      const contract = new ethers.Contract(contractAddress, abi, provider);
 
       // Fetch all Transfer events to track holders
       const filter = contract.filters.Transfer(null, null);
