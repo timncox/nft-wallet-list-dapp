@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ethers } from 'ethers';
 import HolderTable from './components/HolderTable';
 import './App.css';
+import { CSVLink } from 'react-csv';
 
 // Use environment variables to store sensitive information like Infura keys
 const lineaSepoliaRpc = process.env.REACT_APP_INFURA_RPC_URL;
@@ -75,7 +76,14 @@ function App() {
           placeholder="Enter NFT Contract Address"
         />
         <button onClick={fetchHolders}>Fetch Holders</button>
-        {holders.length > 0 && <HolderTable holders={holders} />}
+        {holders.length > 0 && (
+          <>
+            <HolderTable holders={holders} />
+            <CSVLink data={holders.map(holder => ({ address: holder }))} filename="nft_holders.csv">
+              Export to CSV
+            </CSVLink>
+          </>
+        )}
       </header>
     </div>
   );
