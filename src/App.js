@@ -3,6 +3,9 @@ import React, { useState } from 'react';
 import { ethers } from 'ethers';
 import HolderTable from './components/HolderTable';
 import './App.css';
+import dotenv from 'dotenv';
+dotenv.config();
+
 
 // Use environment variables to store sensitive information like Infura keys
 const lineaSepoliaRpc = process.env.REACT_APP_INFURA_RPC_URL;
